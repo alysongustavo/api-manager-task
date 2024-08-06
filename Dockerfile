@@ -4,7 +4,7 @@ FROM openjdk:17-jdk-slim
 WORKDIR /app
 
 # Copie o arquivo JAR da aplicação a partir da etapa de construção
-COPY --from=build /app/target/*.jar app.jar
+COPY target/*.jar app.jar
 
 # Expõe a porta 8080
 EXPOSE 8082
