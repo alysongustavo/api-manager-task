@@ -1,0 +1,23 @@
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+nodes:
+  - role: control-plane
+    extraPortMappings:
+      - containerPort: 30080     # Porta para uma API REST (mapeada para 8282 no host)
+        hostPort: 8282
+        protocol: TCP
+      - containerPort: 30081     # Porta para uma API REST Symfony (mapeada para 8000 no host)
+        hostPort: 8000
+        protocol: TCP
+      - containerPort: 30082     # Porta para uma Banco Postgres (mapeada para 5432 no host)
+        hostPort: 5433
+        protocol: TCP
+      - containerPort: 30083     # Porta para uma Banco Postgres (mapeada para 5432 no host)
+        hostPort: 3306
+        protocol: TCP
+      - containerPort: 30084   # Porta para uma aplicação Angular (mapeada para 4200 no host)
+        hostPort: 4200
+        protocol: TCP
+  - role: worker
+  - role: worker
+  - role: worker
