@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+        - name: my-app-container
+          image: cookiesoftdev/api-manager-task:${IMAGE_VERSION}
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: "jdbc:postgresql://192.168.18.15:5432/db_task"
+            - name: SPRING_DATASOURCE_USERNAME
+              value: "postgres"
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: "computacao2014"
+            - name: SPRING_DATASOURCE_DRIVER_CLASS_NAME
+              value: "org.postgresql.Driver"
+            - name: SPRING_JPA_SHOW_SQL
+              value: "true"
+            - name: SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT
+              value: "org.hibernate.dialect.PostgreSQLDialect"
+            - name: SPRING_DATASOURCE_HIKARI_CONNECTION_TIMEOUT
+              value: "10000"
+            - name: SPRING_DATASOURCE_HIKARI_MAX_LIFETIME
+              value: "1800000"
+            - name: SPRING_DATASOURCE_HIKARI_IDLE_TIMEOUT
+              value: "600000"
+            - name: SPRING_DATASOURCE_HIKARI_MAXIMUM_POOL_SIZE
+              value: "10"
+            - name: SPRING_DATASOURCE_HIKARI_DATA_SOURCE_PROPERTIES_STATEMENT_TIMEOUT
+              value: "10000"
+            - name: SECURITY_JWT_SECRET_KEY
+              value: "3cfa76ef14937c1c0ea519f8fc057a80fcd04a7420f8e8bcd0a7567c272e007b"
+            - name: SECURITY_JWT_EXPIRATION_TIME
+              value: "3600000"
+            - name: SPRINGDOC_API_DOCS_PATH
+              value: "/api-docs"
+            - name: SERVER_ADDRESS
+              value: "0.0.0.0"
+      imagePullSecrets:
+        - name: dockerhub-secret                                                                                                                                          52,14         Bot
