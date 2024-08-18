@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: my-app-container
-          image: cookiesoftdev/api-manager-task:1.0.6
+          image: "cookiesoftdev/api-manager-task:${IMAGE_VERSION}"
           ports:
             - containerPort: 8080
           env:
