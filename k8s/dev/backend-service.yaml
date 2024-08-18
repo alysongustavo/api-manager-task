@@ -9,4 +9,4 @@ spec:
   ports:
     - port: 8080        # Porta interna do serviço
       targetPort: 8080  # Porta no container
-      nodePort: 30085    # Porta mapeada no nó (Kind cluster)
+      nodePort: ${SERVICE_PORT}    # Porta mapeada no nó (Kind cluster)
