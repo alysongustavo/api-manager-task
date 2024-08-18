@@ -14,12 +14,12 @@ spec:
     spec:
       containers:
         - name: my-app-container
-          image: cookiesoftdev/api-manager-task:1.0.6
+          image: cookiesoftdev/api-manager-task:${IMAGE_VERSION}
           ports:
             - containerPort: 8080
           env:
             - name: SPRING_DATASOURCE_URL
-              value: "jdbc:postgresql://192.168.18.15:5432/db_task"
+              value: "jdbc:postgresql://192.168.18.15:5432/db_task_dev"
             - name: SPRING_DATASOURCE_USERNAME
               value: "postgres"
             - name: SPRING_DATASOURCE_PASSWORD
