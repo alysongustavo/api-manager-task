@@ -42,4 +42,4 @@ jobs:
           -Dsonar.login=${{ secrets.SONAR_TOKEN }}
 
       - name: Run tests
-        run: mvn test
+        run: mvn test -Dspring.profiles.active=test
