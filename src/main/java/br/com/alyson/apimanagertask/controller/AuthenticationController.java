@@ -23,6 +23,9 @@ public class AuthenticationController {
         this.authenticationService = authenticationService;
     }
 
+    /**
+     * @return ResponseEntity<User>
+     */
     @PostMapping("/signup")
     public ResponseEntity<User> register(@RequestBody @Valid UserSaveDto registerUserDto) {
         User registeredUser = authenticationService.signup(registerUserDto);
