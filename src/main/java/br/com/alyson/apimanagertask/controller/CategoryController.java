@@ -16,6 +16,9 @@ import java.util.List;
 @RequestMapping("/categories")
 public class CategoryController {
 
+    /**
+     * Injeção de dependência da classe CategoryService
+     */
     @Autowired
     private CategoryService categoryService;
 
