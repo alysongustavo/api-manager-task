@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: my-app
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: my-app
@@ -15,6 +15,13 @@ spec:
       containers:
         - name: my-app-container
           image: "cookiesoftdev/api-manager-task:${IMAGE_VERSION}"
+          resources:
+            requests:
+              memory: "1Gi"      # 1 GB de memória
+              cpu: "3000m"       # 3 cores de CPU
+            limits:
+              memory: "3Gi"      # 3 GB de memória
+              cpu: "6000m"       # 6 cores de CPU
           ports:
             - containerPort: 8080
           env:
